@@ -1,0 +1,20 @@
+﻿<Window x:Class="SGBD_Juin.XAML.WPF_SearchClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGBD_Juin.XAML"
+        mc:Ignorable="d"
+        Title="Rechercher un client..." Height="480" Width="600" WindowStartupLocation="CenterScreen" Icon="/SGBD-Juin;component/Icon/Logo.ico">
+    <Grid>
+        <GroupBox x:Name="GRP_Search" Header="Champs de recherche" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" Height="58">
+            <Grid HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="562" Margin="0,0,-2,0">
+                <TextBox x:Name="TXT_ClientName" HorizontalAlignment="Left" Height="26" Margin="133,7,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="419" TextChanged="TXT_ClientName_TextChanged" TabIndex="1"/>
+                <Label x:Name="LBL_ClientName" Content="Nom du client :" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top" Width="118"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="DGV_Client" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Height="341" Width="572" IsReadOnly="true" MouseDoubleClick="DGV_Client_MouseDoubleClick" />
+        <Button x:Name="BTN_Close" Content="Retour sans sélection" HorizontalAlignment="Left" Margin="428,419,0,0" VerticalAlignment="Top" Width="154" Click="BTN_Close_Click" TabIndex="2" IsCancel="True"/>
+
+    </Grid>
+</Window>

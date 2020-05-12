@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SGBD-Juin" Class="SGBD_JuinDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=SOS-L999\MSSQLDEVEL;Initial Catalog=SGBD-Juin;Integrated Security=True" SettingsObjectName="SGBD_Juin.Properties.Settings" SettingsPropertyName="SGBD_JuinConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Administrative" Member="Administratives">
+    <Type Name="Administrative">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Salary" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="InternPhone" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Association Name="Administrative_Ticket" Member="Tickets" ThisKey="ID" OtherKey="IDAdministrative" Type="Ticket" />
+      <Association Name="User_Administrative" Member="User" ThisKey="IDUser" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Usn" Type="System.String" DbType="NVarChar(101) NOT NULL" CanBeNull="false" />
+      <Column Name="Pwd" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="FName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Mail" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="FAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FDelete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_Administrative" Member="Administratives" ThisKey="ID" OtherKey="IDUser" Type="Administrative" />
+      <Association Name="User_Technical" Member="Technicals" ThisKey="ID" OtherKey="IDUser" Type="Technical" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customers">
+    <Type Name="Customer">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="StreetNB" Type="System.String" DbType="NVarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="StreetBOX" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="Tel" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Mail" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Association Name="Customer_Ticket" Member="Tickets" ThisKey="ID" OtherKey="IDCustomer" Type="Ticket" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Technical" Member="Technicals">
+    <Type Name="Technical">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="HourRate" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="GSM" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Technical_Intervention" Member="Interventions" ThisKey="ID" OtherKey="IDTechnical" Type="Intervention" />
+      <Association Name="User_Technical" Member="User" ThisKey="IDUser" OtherKey="ID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ticket" Member="Tickets">
+    <Type Name="Ticket">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDCustomer" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDAdministrative" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DateIN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="FFinished" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Ticket_Intervention" Member="Interventions" ThisKey="ID" OtherKey="IDTicket" Type="Intervention" />
+      <Association Name="Administrative_Ticket" Member="Administrative" ThisKey="IDAdministrative" OtherKey="ID" Type="Administrative" IsForeignKey="true" />
+      <Association Name="Customer_Ticket" Member="Customer" ThisKey="IDCustomer" OtherKey="ID" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_AllTickets" Member="V_AllTickets">
+    <Type Name="V_AllTicket">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DateIN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_OpenedTicket" Member="V_OpenedTickets">
+    <Type Name="V_OpenedTicket">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DateIN" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Intervention" Member="Interventions">
+    <Type Name="Intervention">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDTicket" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDTechnical" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateBegin" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateEnd" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="TechnicalNote" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Technical_Intervention" Member="Technical" ThisKey="IDTechnical" OtherKey="ID" Type="Technical" IsForeignKey="true" />
+      <Association Name="Ticket_Intervention" Member="Ticket" ThisKey="IDTicket" OtherKey="ID" Type="Ticket" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PS_Delete_Intervention" Method="PS_Delete_Intervention">
+    <Parameter Name="IDIntervention" Parameter="iDIntervention" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_User" Method="PS_Update_User">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Parameter Name="Pwd" Parameter="pwd" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="FName" Parameter="fName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LName" Parameter="lName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Mail" Parameter="mail" Type="System.String" DbType="NText" />
+    <Parameter Name="FAdmin" Parameter="fAdmin" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="FActive" Parameter="fActive" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="FDelete" Parameter="fDelete" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Delete_Ticket" Method="PS_Delete_Ticket">
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Delete_User" Method="PS_Delete_User">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_Administrative" Method="PS_Insert_Administrative">
+    <Parameter Name="IDUser" Parameter="iDUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Salary" Parameter="salary" Type="System.Double" DbType="Float" />
+    <Parameter Name="InternPhone" Parameter="internPhone" Type="System.String" DbType="NVarChar(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_Customer" Method="PS_Insert_Customer">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ZipCode" Parameter="zipCode" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Street" Parameter="street" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="StreetNB" Parameter="streetNB" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="StreetBOX" Parameter="streetBOX" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Tel" Parameter="tel" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Fax" Parameter="fax" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Mail" Parameter="mail" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_Technical" Method="PS_Insert_Technical">
+    <Parameter Name="IDUser" Parameter="iDUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="HourRate" Parameter="hourRate" Type="System.Double" DbType="Float" />
+    <Parameter Name="GSM" Parameter="gSM" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_Ticket" Method="PS_Insert_Ticket">
+    <Parameter Name="IDCustomer" Parameter="iDCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDAdministrative" Parameter="iDAdministrative" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Subject" Parameter="subject" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="DateIN" Parameter="dateIN" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_User" Method="PS_Insert_User">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Parameter Name="Pwd" Parameter="pwd" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="FName" Parameter="fName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="LName" Parameter="lName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Mail" Parameter="mail" Type="System.String" DbType="NText" />
+    <Parameter Name="FAdmin" Parameter="fAdmin" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_ActivateUser" Method="PS_Other_ActivateUser">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_AddInterventionNote" Method="PS_Other_AddInterventionNote">
+    <Parameter Name="IDIntervention" Parameter="iDIntervention" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_AddTicketNote" Method="PS_Other_AddTicketNote">
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_ChangeUsername" Method="PS_Other_ChangeUsername">
+    <Parameter Name="IDUser" Parameter="iDUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_ChangeUserPassword" Method="PS_Other_ChangeUserPassword">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Parameter Name="Pwd" Parameter="pwd" Type="System.String" DbType="NVarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_ConcludeTicket" Method="PS_Other_ConcludeTicket">
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_DeactivateUser" Method="PS_Other_DeactivateUser">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Other_ReopenTicket" Method="PS_Other_ReopenTicket">
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Undelete_User" Method="PS_Undelete_User">
+    <Parameter Name="Usn" Parameter="usn" Type="System.String" DbType="NVarChar(101)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_Administrative" Method="PS_Update_Administrative">
+    <Parameter Name="IDUser" Parameter="iDUser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Salary" Parameter="salary" Type="System.Double" DbType="Float" />
+    <Parameter Name="InternPhone" Parameter="internPhone" Type="System.String" DbType="NVarChar(5)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_Customer" Method="PS_Update_Customer">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ZipCode" Parameter="zipCode" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="City" Parameter="city" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="Street" Parameter="street" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="StreetNB" Parameter="streetNB" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="StreetBOX" Parameter="streetBOX" Type="System.String" DbType="NVarChar(2)" />
+    <Parameter Name="Tel" Parameter="tel" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Fax" Parameter="fax" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Mail" Parameter="mail" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_Technical" Method="PS_Update_Technical">
+    <Parameter Name="IDuser" Parameter="iDuser" Type="System.Int32" DbType="Int" />
+    <Parameter Name="HourRate" Parameter="hourRate" Type="System.Double" DbType="Float" />
+    <Parameter Name="GSM" Parameter="gSM" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_Ticket" Method="PS_Update_Ticket">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDCustomer" Parameter="iDCustomer" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDAdministrative" Parameter="iDAdministrative" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Subject" Parameter="subject" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="DateIN" Parameter="dateIN" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NText" />
+    <Parameter Name="FFinished" Parameter="fFinished" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Insert_Intervention" Method="PS_Insert_Intervention">
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDTechnical" Parameter="iDTechnical" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateBegin" Parameter="dateBegin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DateEnd" Parameter="dateEnd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Subject" Parameter="subject" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="TechnicalNote" Parameter="technicalNote" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PS_Update_Intervention" Method="PS_Update_Intervention">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDTicket" Parameter="iDTicket" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IDTechnical" Parameter="iDTechnical" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateBegin" Parameter="dateBegin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="DateEnd" Parameter="dateEnd" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Subject" Parameter="subject" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Note" Parameter="note" Type="System.String" DbType="NText" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="SGBD-Juin">
+  <DataContextMoniker Name="/SGBD_JuinDataContext" />
+  <nestedChildShapes>
+    <classShape Id="ead1e336-b3ec-4685-9410-dda9f7126ace" absoluteBounds="3.5, 1.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/Administrative" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50d0e872-04f2-43e7-bf60-3665d4d05197" absoluteBounds="3.515, 1.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="efc83b4f-3321-4107-9f68-fe7d6dcb21ae" absoluteBounds="0.75, 2, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5565d8bf-15ac-40e1-b195-28c36bf346b4" absoluteBounds="0.765, 2.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="241ce155-5b48-457e-b6b5-54fe682eaf27" absoluteBounds="6.125, 4.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="edcf9967-5177-4b63-8e75-9e89213c2d04" absoluteBounds="6.1400000000000006, 4.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27de0d9e-bec2-4940-be3a-6edbc248623d" absoluteBounds="3.5, 3.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/Technical" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31b93de2-14f5-4383-bd2c-16ed192bb874" absoluteBounds="3.515, 4.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1713349f-b23e-4e08-83b4-ec6fba84752c" absoluteBounds="6.25, 1, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/Ticket" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1b0a530-e23e-4605-b042-6ef2367bd864" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.47679768880208); (3.5 : 2.47679768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/User/User_Administrative" />
+      <nodes>
+        <classShapeMoniker Id="efc83b4f-3321-4107-9f68-fe7d6dcb21ae" />
+        <classShapeMoniker Id="ead1e336-b3ec-4685-9410-dda9f7126ace" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.08255126953125); (3.5 : 4.08255126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/User/User_Technical" />
+      <nodes>
+        <classShapeMoniker Id="efc83b4f-3321-4107-9f68-fe7d6dcb21ae" />
+        <classShapeMoniker Id="27de0d9e-bec2-4940-be3a-6edbc248623d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.16429768880208); (6.25 : 2.16429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/Administrative/Administrative_Ticket" />
+      <nodes>
+        <classShapeMoniker Id="ead1e336-b3ec-4685-9410-dda9f7126ace" />
+        <classShapeMoniker Id="1713349f-b23e-4e08-83b4-ec6fba84752c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.1875 : 4.5); (7.1875 : 3.15549967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/Customer/Customer_Ticket" />
+      <nodes>
+        <classShapeMoniker Id="241ce155-5b48-457e-b6b5-54fe682eaf27" />
+        <classShapeMoniker Id="1713349f-b23e-4e08-83b4-ec6fba84752c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2af44e5c-a16d-403a-96e9-214ca2d8902d" absoluteBounds="0.625, 5.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/V_AllTicket" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54b04385-bc70-4f29-9740-e993af5dcbb2" absoluteBounds="0.64, 5.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7db428c-145c-46f2-b572-04e9461c5941" absoluteBounds="3.375, 5.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/V_OpenedTicket" />
+      <nestedChildShapes>
+        <elementListCompartment Id="963f7e12-9392-4486-bf63-414b386ea14c" absoluteBounds="3.39, 6.3350000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="225dccef-f824-454a-8613-06879e9ff06b" absoluteBounds="9, 2.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SGBD_JuinDataContext/Intervention" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64e5f51e-d078-442a-bae7-605dc314785c" absoluteBounds="9.015, 2.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 3.95274983723958); (7.10416666666667 : 3.95274983723958 : JumpStart); (7.27083333333333 : 3.95274983723958 : JumpEnd); (9 : 3.95274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/Technical/Technical_Intervention" />
+      <nodes>
+        <classShapeMoniker Id="27de0d9e-bec2-4940-be3a-6edbc248623d" />
+        <classShapeMoniker Id="225dccef-f824-454a-8613-06879e9ff06b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.64024983723958); (9 : 2.64024983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/SGBD_JuinDataContext/Ticket/Ticket_Intervention" />
+      <nodes>
+        <classShapeMoniker Id="1713349f-b23e-4e08-83b4-ec6fba84752c" />
+        <classShapeMoniker Id="225dccef-f824-454a-8613-06879e9ff06b" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,23 @@
+﻿<Window x:Class="SGBD_Juin.XAML.WPF_SearchRMA"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGBD_Juin.XAML"
+        mc:Ignorable="d"
+        Title="Recherche de ticket" Height="394.653" Width="600" WindowStartupLocation="CenterScreen" Icon="/SGBD-Juin;component/Icon/Logo.ico">
+    <Grid>
+        <GroupBox x:Name="GRP_Search" Header="Champs de recherche" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="572" Height="108">
+            <Grid HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="562" Margin="0,0,-2,0">
+                <RadioButton x:Name="RDB_NumRMA" Content="Numéro du ticket :" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Checked="RDB_NumRMA_Checked" TabIndex="1"/>
+                <TextBox x:Name="TXT_NumRMA" HorizontalAlignment="Left" Height="23" Margin="133,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="419" TextChanged="TXT_NumRMA_TextChanged" TabIndex="2"/>
+                <RadioButton x:Name="RDB_NomClient" Content="Nom du client :" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Checked="RDB_NomClient_Checked" TabIndex="3"/>
+                <TextBox x:Name="TXT_NomClient" HorizontalAlignment="Left" Height="23" Margin="133,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="419" TextChanged="TXT_NomClient_TextChanged" TabIndex="4"/>
+                <CheckBox x:Name="CHK_ClosedRMA" Content="Tickets cloturés." HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="118" Checked="CHK_ClosedRMA_Checked" Unchecked="CHK_ClosedRMA_Unchecked" TabIndex="5"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid x:Name="DGV_Search" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Height="206" Width="572" IsReadOnly="true" MouseDoubleClick="DGV_Search_MouseDoubleClick"/>
+        <Button x:Name="BTN_Close" Content="Retour" HorizontalAlignment="Left" Margin="482,334,0,0" VerticalAlignment="Top" Width="100" Click="BTN_Close_Click" TabIndex="6" IsCancel="True"/>
+
+    </Grid>
+</Window>

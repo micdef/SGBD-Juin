@@ -1,0 +1,23 @@
+﻿<Window x:Class="SGBD_Juin.XAML.WPF_MySettings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGBD_Juin.XAML"
+        mc:Ignorable="d"
+        Title="Modification de mon mot de passe..." Height="186.119" Width="800" WindowStartupLocation="CenterScreen" Icon="/SGBD-Juin;component/Icon/Logo.ico">
+    <Grid>
+        <Label x:Name="LBL_OldPWD" Content="Mot de passe actuel :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LBL_NewPWD" Content="Nouveau mot de passe :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LBL_NewPWD1" Content="Répetez le nouveau mot de passe :" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="IMG_OldPWD" HorizontalAlignment="Left" Height="26" Margin="756,10,0,0" VerticalAlignment="Top" Width="26"/>
+        <Image x:Name="IMG_NewPWD" HorizontalAlignment="Left" Height="26" Margin="756,41,0,0" VerticalAlignment="Top" Width="26"/>
+        <Image x:Name="IMG_NewPWD1" HorizontalAlignment="Left" Height="26" Margin="756,72,0,0" VerticalAlignment="Top" Width="26"/>
+        <PasswordBox x:Name="PWD_NewPWD1" HorizontalAlignment="Left" Margin="209,72,0,0" VerticalAlignment="Top" Width="542" Height="26" PasswordChanged="PWD_NewPWD1_PasswordChanged" TabIndex="3"/>
+        <PasswordBox x:Name="PWD_NewPWD" HorizontalAlignment="Left" Margin="209,41,0,0" VerticalAlignment="Top" Width="542" Height="26" PasswordChanged="PWD_NewPWD_PasswordChanged" TabIndex="2"/>
+        <PasswordBox x:Name="PWD_OldPWD" HorizontalAlignment="Left" Margin="209,10,0,0" VerticalAlignment="Top" Width="542" Height="26" PasswordChanged="PWD_OldPWD_PasswordChanged" TabIndex="1"/>
+        <Button x:Name="BTN_Accept" Content="Modifier" HorizontalAlignment="Left" Margin="682,123,0,0" VerticalAlignment="Top" Width="100" Click="BTN_Accept_Click" TabIndex="4" IsDefault="True"/>
+        <Button x:Name="BTN_Cancel" Content="Annuler" HorizontalAlignment="Left" Margin="577,123,0,0" VerticalAlignment="Top" Width="100" Click="BTN_Cancel_Click" TabIndex="5" IsCancel="True"/>
+
+    </Grid>
+</Window>

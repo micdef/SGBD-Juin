@@ -1,0 +1,32 @@
+﻿<Window x:Class="SGBD_Juin.XAML.WPF_ModifClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGBD_Juin.XAML"
+        mc:Ignorable="d"
+        Title="Formulaire de modification de client..." Height="178.049" Width="800" WindowStartupLocation="CenterScreen" Icon="/SGBD-Juin;component/Icon/Logo.ico">
+    <Grid>
+        <Label x:Name="LBL_Name" Content="Nom :" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_Name" HorizontalAlignment="Left" Height="26" Margin="57,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="725" IsReadOnly="True" MouseDoubleClick="TXT_Name_MouseDoubleClick" TabIndex="1"/>
+        <Label x:Name="LBL_ZipCode" Content="Code Postal :" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_ZipCode" HorizontalAlignment="Left" Height="26" Margin="93,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" TextChanged="TXT_ZipCode_TextChanged" TabIndex="2"/>
+        <Label x:Name="LBL_City" Content="Ville :" HorizontalAlignment="Left" Margin="132,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_City" HorizontalAlignment="Left" Height="26" Margin="175,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" TabIndex="3"/>
+        <Label x:Name="LBL_Street" Content="Rue :" HorizontalAlignment="Left" Margin="366,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_Street" HorizontalAlignment="Left" Height="26" Margin="407,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TabIndex="4"/>
+        <Label x:Name="LBL_StreetNB" Content="Num. :" HorizontalAlignment="Left" Margin="611,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_StreetNB" HorizontalAlignment="Left" Height="26" Margin="661,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" TextChanged="TXT_StreetNB_TextChanged" TabIndex="5"/>
+        <Label x:Name="LBL_StreetBox" Content="Boite :" HorizontalAlignment="Left" Margin="700,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_StreetBox" HorizontalAlignment="Left" Height="26" Margin="748,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34" TabIndex="6"/>
+        <Label x:Name="LBL_Telephone" Content="Téléphone : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_Telephone" HorizontalAlignment="Left" Height="26" Margin="89,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" TabIndex="7"/>
+        <Label x:Name="LBL_Fax" Content="Fax :" HorizontalAlignment="Left" Margin="203,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_Fax" HorizontalAlignment="Left" Height="26" Margin="241,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" TabIndex="8"/>
+        <Label x:Name="LBL_eMail" Content="e-Mail :" HorizontalAlignment="Left" Margin="355,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TXT_eMail" HorizontalAlignment="Left" Height="26" Margin="410,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="372" TabIndex="9"/>
+        <Button x:Name="BTN_Accept" Content="Encoder" HorizontalAlignment="Left" Margin="682,115,0,0" VerticalAlignment="Top" Width="100" Click="BTN_Accept_Click" TabIndex="10" IsDefault="True"/>
+        <Button x:Name="BTN_RAZ" Content="Remise à Zéro" HorizontalAlignment="Left" Margin="577,115,0,0" VerticalAlignment="Top" Width="100" Click="BTN_RAZ_Click" TabIndex="11"/>
+        <Button x:Name="BTN_Cancel" Content="Annuler" HorizontalAlignment="Left" Margin="472,115,0,0" VerticalAlignment="Top" Width="100" Click="BTN_Cancel_Click" IsCancel="True" TabIndex="12"/>
+    </Grid>
+</Window>
